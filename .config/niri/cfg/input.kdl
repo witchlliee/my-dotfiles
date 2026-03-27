@@ -1,0 +1,23 @@
+
+        // ────────────── Input Configuration ────────────── //
+
+input {
+  keyboard {
+    xkb {
+      layout "br"
+    }
+        numlock
+  }
+
+  mouse {
+    accel-profile "flat"
+  }
+
+  touchpad {
+    tap
+    natural-scroll
+  }
+
+    focus-follows-mouse // Automatically focus windows under the mouse pointer
+    workspace-auto-back-and-forth // Enable workspace back & forth switching
+}

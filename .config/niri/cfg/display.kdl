@@ -1,0 +1,14 @@
+
+        // ────────────── Output Configuration ────────────── //
+
+ output "DP-1" {
+    mode "2560x1440@179.999"
+    scale 1
+    variable-refresh-rate
+    focus-at-startup
+}
+
+ output "DP-2" {
+   mode "2560x1440@179.845"
+   scale 1
+}

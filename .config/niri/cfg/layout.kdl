@@ -1,0 +1,29 @@
+  layout {
+    gaps 16 // Gap between windows
+    center-focused-column "never"
+    background-color "transparent"
+
+    preset-column-widths {
+      proportion 0.33333
+      proportion 0.5
+      proportion 0.66667
+    }
+
+    border {
+      on
+      width 4
+      active-gradient from="#E0AFFF" to="#B74394" angle=45 relative-to="workspace-view" in="srgb-linear"
+      inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view" in="srgb-linear"
+    }
+
+    focus-ring {
+      off
+    }
+
+    struts {
+      left 24
+      right 24
+      top 24
+      bottom 24
+    }
+  }

@@ -1,0 +1,46 @@
+  prefer-no-csd
+  screenshot-path null
+
+  environment {
+       // wayland
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+    QT_QPA_PLATFORM "wayland"
+    SDL_VIDEODRIVER "wayland"
+    CLUTTER_BACKEND "wayland"
+    ELM_DISPLAY "1"
+    _JAVA_AWT_WM_NONREPARENTING "1"
+
+       // gaming
+     AMD_VULKAN_ICD "RADV"
+     MESA_SHADER_CACHE_MAX_SIZE "12G"
+     PROTON_ENABLE_WAYLAND "1"
+     PROTON_DXVK_LOWLATENCY "1"
+     DXVK_FRAME_RATE "177"
+     DXVK_FRAME_PACE "low-latency-vrr-180"
+     WINEDLLOVERRIDES "dxgi,d3d11,d3d10core,dinput8,ddraw=n,b"
+     PROTON_LOCAL_SHADER_CACHE "1"
+
+       // theming
+     QT_QPA_PLATFORMTHEME "qt6ct"
+     QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
+  }
+
+  blur {
+    passes 2
+    offset 3
+    noise 0.04
+    saturation 1.8
+  }
+
+  cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 28
+  }
+
+  debug {
+    honor-xdg-activation-with-invalid-serial
+  }
+
+  hotkey-overlay {
+    skip-at-startup
+  }
