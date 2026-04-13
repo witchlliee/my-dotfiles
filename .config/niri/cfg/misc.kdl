@@ -2,9 +2,9 @@
   screenshot-path null
 
   environment {
-    TERMINAL "ghostty"
-
-    GTK_IM_MODULE "simple"
+    GTK_IM_MODULE "ibus"
+    QT_IM_MODULE "ibus"
+    XMODIFIERS "@im=ibus"
 
        // wayland
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
