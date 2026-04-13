@@ -4,11 +4,13 @@
  output "DP-1" {
     mode "2560x1440@179.999"
     scale 1
-    variable-refresh-rate
+    position x=2560 y=0
+    variable-refresh-rate on-demand=true
     focus-at-startup
 }
 
  output "DP-2" {
    mode "2560x1440@179.845"
+   position x=0 y=0
    scale 1
 }

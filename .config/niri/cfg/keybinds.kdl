@@ -5,31 +5,54 @@ binds {
 
     Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
 
-    // ─── Applications ───
-    Mod+T                               { spawn "ghostty"; }
-    Mod {
-      release { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    // --- Applications ── //
+    Mod+T                               { spawn-sh "GTK_IM_MODULE=simple ghostty"; }
+    Mod+E                               { spawn "nautilus"; }
+    Mod+B                               { spawn "vivaldi"; }
+
+    // Application Launchers
+    Mod+A hotkey-overlay-title="Application Launcher" {
+        spawn-sh "dms ipc call spotlight toggle";
     }
-    Mod+B                               { spawn "firefox"; }
-    Mod+ALT+L                           { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
-    Mod+Shift+E                         { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+C hotkey-overlay-title="Clipboard Manager" {
+        spawn-sh "dms ipc call clipboard toggle";
+    }
+    Mod+M hotkey-overlay-title="Task Manager" {
+        spawn-sh "dms ipc call processlist focusOrToggle";
+    }
+    Mod+S hotkey-overlay-title="Settings" {
+        spawn-sh "dms ipc call settings focusOrToggle";
+    }
+    Mod+N hotkey-overlay-title="Notification Center" {
+        spawn-sh "dms ipc call notifications toggle";
+    }
+    Mod+W hotkey-overlay-title="Browse Wallpapers" {
+        spawn-sh "dms ipc call dankdash wallpaper";
+    }
 
-    // Please choose your own file manager.
-    Mod+E                               { spawn "dolphin"; }
+    // --- Screenshot --- //
+    Mod+P { screenshot; }
+    Mod+Shift+P { screenshot-screen; }
 
-    // ─── Media Controls ───
-    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
-    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
-    XF86AudioMute                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
-    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
-    XF86AudioNext                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media next"; }
-    XF86AudioPrev                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
-    XF86AudioPlay                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-    XF86AudioPause                      allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
 
-    // ─── Brightness Controls ───
-    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
-    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
+   // Audio Controls
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn-sh "dms ipc call audio increment 3";
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn-sh "dms ipc call audio decrement 3";
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn-sh "dms ipc call audio mute";
+    }
+
+    // Brightness Controls
+    XF86MonBrightnessUp allow-when-locked=true {
+       spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
+    }
+    XF86MonBrightnessDown allow-when-locked=true {
+       spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
+    }
 
     // ─── Window Movement and Focus ───
     Mod+Q                               { close-window; }
@@ -107,7 +130,7 @@ binds {
 
     // ─── Layout Controls ───
     Mod+CTRL+F                          { expand-column-to-available-width; }
-    Mod+C                               { center-column; }
+    Mod+Shift+C                         { center-column; }
     Mod+CTRL+C                          { center-visible-columns; }
     Mod+Minus                           { set-column-width "-10%"; }
     Mod+Equal                           { set-column-width "+10%"; }
@@ -118,7 +141,7 @@ binds {
     Mod+V                               { toggle-window-floating; }
     Mod+F                               { maximize-column; }
     Mod+Shift+F                         { fullscreen-window; }
-    Mod+W                               { toggle-column-tabbed-display; }
+    Mod+Shift+W                               { toggle-column-tabbed-display; }
 
     // ─── Screenshots ───
     CTRL+Shift+1                        { screenshot; }
@@ -132,6 +155,6 @@ binds {
 
     // ─── Exit / Power ───
     CTRL+ALT+Delete                     { quit; } // Also quits Niri
-    Mod+Shift+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
+    Mod+Ctrl+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
     Mod+O                               repeat=false { toggle-overview; }
 }

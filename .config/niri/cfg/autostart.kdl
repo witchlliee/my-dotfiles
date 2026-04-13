@@ -1,8 +1,11 @@
         // ────────────── Startup Applications ────────────── //
 
-  spawn-sh-at-startup "qs -c noctalia-shell"
+  spawn-sh-at-startup "dms run"
   spawn-sh-at-startup "bash -c wl-paste --watch cliphist store &"
+  spawn-sh-at-startup "wl-clip-persist --clipboard both &"
   spawn-sh-at-startup "/usr/lib/soteria-polkit/soteria &"
   spawn-sh-at-startup "sleep 3 && shelly-notifications &"
-  spawn-sh-at-startup "steam -silent &"
-  spawn-sh-at-startup "sleep 3 && heroic & vesktop &"
+  spawn-sh-at-startup "sleep 1 && steam -silent &"
+  spawn-sh-at-startup "sleep 3 && heroic &"
+  spawn-sh-at-startup "sleep 3 && vesktop &"
+  spawn-sh-at-startup "sleep 1 && solaar --window=hide &"
