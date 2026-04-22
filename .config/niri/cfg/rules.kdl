@@ -1,7 +1,7 @@
   window-rule {
     geometry-corner-radius 6
     clip-to-geometry true
-    opacity 0.90
+    opacity 0.96
     draw-border-with-background false
 
     background-effect {
@@ -10,7 +10,7 @@
     }
 
     popups {
-      opacity 0.8
+      opacity 0.93
       geometry-corner-radius 10
 
       background-effect {
