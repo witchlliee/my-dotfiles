@@ -1,4 +1,1 @@
-theme = Atom
-
-quit-after-last-window-closed = false
-quit-after-last-window-closed-delay = 5m
+theme = Carbonfox

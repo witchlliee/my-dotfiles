@@ -2,10 +2,6 @@
   screenshot-path null
 
   environment {
-    GTK_IM_MODULE "ibus"
-    QT_IM_MODULE "ibus"
-    XMODIFIERS "@im=ibus"
-
        // wayland
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
     QT_QPA_PLATFORM "wayland"
@@ -22,9 +18,9 @@
 
    blur {
     passes 3
-    offset 3
-    noise 0.10
-    saturation 2.0
+    offset 3.0
+    noise 0.02
+    saturation 2.3
    }
 
   recent-windows {
@@ -34,12 +30,12 @@
     highlight {
         active-color "#E0AFFF"
         urgent-color "#ff9999ff"
-        padding 30
+        padding 25
         corner-radius 8
     }
 
     previews {
-        max-height 240
+        max-height 200
         max-scale 0.5
     }
 
@@ -57,13 +53,13 @@
   }
 
   cursor {
-    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-theme "Bibata-Modern-Classic"
     xcursor-size 28
   }
 
   debug {
     honor-xdg-activation-with-invalid-serial
-   // skip-cursor-only-updates-during-vrr
+    skip-cursor-only-updates-during-vrr
    // disable-cursor-plane
    // enable-overlay-planes
   }

@@ -8,53 +8,27 @@ binds {
     // --- Applications ── //
     Mod+T                               { spawn-sh "GTK_IM_MODULE=simple ghostty"; }
     Mod+E                               { spawn "nautilus"; }
-    Mod+B                               { spawn "vivaldi"; }
+    Mod+B                               { spawn "helium-browser"; }
 
-    // Application Launchers
-    Mod+A hotkey-overlay-title="Application Launcher" {
-        spawn-sh "dms ipc call spotlight toggle";
-    }
-    Mod+C hotkey-overlay-title="Clipboard Manager" {
-        spawn-sh "dms ipc call clipboard toggle";
-    }
-    Mod+M hotkey-overlay-title="Task Manager" {
-        spawn-sh "dms ipc call processlist focusOrToggle";
-    }
-    Mod+S hotkey-overlay-title="Settings" {
-        spawn-sh "dms ipc call settings focusOrToggle";
-    }
-    Mod+N hotkey-overlay-title="Notification Center" {
-        spawn-sh "dms ipc call notifications toggle";
-    }
-    Mod+W hotkey-overlay-title="Browse Wallpapers" {
-        spawn-sh "dms ipc call dankdash wallpaper";
-    }
+    // --- Core Noctalia binds --- //
+    Mod+A { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+W { spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"; }
+    Mod+C { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    Mod+S { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    Mod+Shift+E { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+
+    // Audio & Brightness
+    XF86AudioRaiseVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioMute { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    XF86MonBrightnessUp { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+    XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
     // --- Screenshot --- //
     Mod+P { screenshot; }
     Mod+Shift+P { screenshot-screen; }
 
-
-   // Audio Controls
-    XF86AudioRaiseVolume allow-when-locked=true {
-        spawn-sh "dms ipc call audio increment 3";
-    }
-    XF86AudioLowerVolume allow-when-locked=true {
-        spawn-sh "dms ipc call audio decrement 3";
-    }
-    XF86AudioMute allow-when-locked=true {
-        spawn-sh "dms ipc call audio mute";
-    }
-
-    // Brightness Controls
-    XF86MonBrightnessUp allow-when-locked=true {
-       spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
-    }
-    XF86MonBrightnessDown allow-when-locked=true {
-       spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
-    }
-
-    // ─── Window Movement and Focus ───
+    // ─── Window Movement and Focus ─── //
     Mod+Q                               { close-window; }
 
     Mod+Left                            { focus-column-left; }
