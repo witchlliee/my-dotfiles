@@ -1,0 +1,310 @@
+# -- https://mahkoh.github.io/jay/book/configuration/startup.html --
+# -- Start your favorite programs at startup.
+on-graphics-initialized = [
+    { type = "exec", exec = "noctalia" },
+    { type = "exec", exec = ["solaar", "--window=hide"] },
+    { type = "exec", exec = ["steam", "-silent"] },
+    { type = "exec", exec = "heroic" },
+    { type = "exec", exec = "fluxer-canary" },
+    { type = "exec", exec = "vesktop" },
+]
+
+
+# -- https://mahkoh.github.io/jay/book/configuration/keymaps.html --
+# -- Choose your keyboard layout here.
+keymap.rmlvo = {
+    layout = "us",
+    variants = "intl,",
+}
+
+# -- Enable/disable Jay's default bar and also window title bars.
+show-bar = false
+show-titles = false
+
+# -- So you can move windows holding the Win/Super key.
+window-management-key = "Super_L"
+
+# -- So Jay's configuration will reload automatically.
+auto-reload = true
+
+# -- https://mahkoh.github.io/jay/book/configuration/idle.html --
+# -- Minutes set to 0 will disable Jay's idle, so it won't conflict with Noctalia's.
+idle = {
+    minutes = 0,
+ }
+
+# -- https://mahkoh.github.io/jay/book/configuration/gpu.html --
+# -- Enabling color-pipelines, so direct-scanout will work with HDR in fullscreen applications.
+[[drm-devices]]
+match = {
+    pci-vendor = 0x1002,
+    pci-model = 0x73ef,
+}
+plane-color-pipelines = true
+
+# -- https://mahkoh.github.io/jay/book/configuration/inputs.html --
+# -- Configure your input devices below.
+[[inputs]]
+match.is-pointer = true
+accel-profile = "Flat"
+accel-speed = 0.0
+
+# -- Configure your monitors below. Run `jay randr show --modes` to check your resolution and refresh-rate, so you can set them properly.
+# -- https://mahkoh.github.io/jay/book/configuration/outputs.html --
+[[outputs]]
+match.serial-number = "00001"
+mode = {
+   width = 2560,
+   height = 1440,
+   refresh-rate = 165.003,
+}
+vrr = { mode = "variant1", cursor-hz = 90 }
+tearing.mode = "variant1"
+color-space = "bt2020"
+transfer-function = "pq"
+brightness = 203
+blend-space = "linear"
+scale = 1.0
+x = 2560
+y = 0
+
+[[outputs]]
+match.serial-number = "TBLMTF008163"
+mode = {
+   width = 2560,
+   height = 1440,
+   refresh-rate = 164.958,
+}
+color-space = "bt2020"
+transfer-function = "pq"
+brightness = 203
+blend-space = "linear"
+scale = 1.0
+x = 0
+y = 0
+
+# -- https://mahkoh.github.io/jay/book/hdr.html --
+# -- Enable/disable HDR.
+[color-management]
+enabled = true
+
+# -- https://mahkoh.github.io/jay/book/configuration/theme.html --
+# -- Configure your Jay's theme below.
+[theme]
+container-borders = "full"
+border-width = 4
+focused-border-color = "#E0AFFF"
+attention-requested-bg-color = "#f38ba8"
+highlight-color = "#f5c2e7"
+
+# -- https://mahkoh.github.io/jay/book/configuration/environment.html --
+# -- Set your environment-variables below.
+[env]
+# jay specific
+XDG_CURRENT_DESKTOP = "jay"
+XDG_SESSION_TYPE = "wayland"
+XDG_SESSION_DESKTOP = "jay"
+
+# proton config
+PROTON_USE_WAYLAND = "1"
+PROTON_USE_WOW64 = "1"
+PROTON_DXVK_LOWLATENCY = "1"
+
+# dxvk config
+DXVK_FRAME_PACE = "low-latency-vrr-163"
+DXVK_FRAME_RATE = "163"
+
+# vkd3d config
+VKD3D_FRAME_RATE = "163"
+PROTON_VKD3D_LOWLATENCY = "1"
+VKD3D_CONFIG = "descriptor_heap"
+VKD3D_SWAPCHAIN_PRESENT_MODE = "FIFO"
+
+# mesa config
+ENABLE_LAYER_MESA_ANTI_LAG = "1"
+MESA_SHADER_CACHE_MAX_SIZE = "12G"
+RADV_EXPERIMENTAL = "heap"
+
+# theme
+QT_QPA_PLATFORMTHEME = "qt6ct"
+
+# logs
+# PROTON_LOG = "+waylanddrv"
+# WAYLAND_DEBUG = "1"
+
+# -- https://mahkoh.github.io/jay/book/configuration/shortcuts.html --
+# -- 'logo' is your Win/Super key.
+[shortcuts]
+alt-h = "focus-left"
+alt-j = "focus-down"
+alt-k = "focus-up"
+alt-l = "focus-right"
+
+alt-shift-h = "move-left"
+alt-shift-j = "move-down"
+alt-shift-k = "move-up"
+alt-shift-l = "move-right"
+
+alt-d = "split-horizontal"
+alt-v = "split-vertical"
+
+alt-t = "toggle-split"
+alt-m = "toggle-mono"
+
+logo-f = "toggle-fullscreen"
+logo-c = "open-control-center"
+logo-q = "close"
+logo-v = "toggle-floating"
+logo-shift-v = "toggle-float-above-fullscreen"
+
+logo-t = { type = "exec", exec = "ghostty" }
+logo-e = { type = "exec", exec = "dolphin" }
+
+# -- Noctalia
+logo-a = { type = "exec", exec = [ "noctalia", "msg", "panel-toggle", "launcher" ] }
+logo-w = { type = "exec", exec = [ "noctalia", "msg", "panel-toggle", "noctalia/wallhaven:browser" ] }
+logo-shift-w = { type = "exec", exec = [ "noctalia", "msg", "panel-toggle", "noctalia/mpvpaper:picker" ] }
+logo-shift-g = { type = "exec", exec = [ "noctalia", "msg", "panel-toggle", "leo/game-launcher:browser" ] }
+logo-s = { type = "exec", exec = [ "noctalia", "msg", "panel-toggle", "control-center" ] }
+logo-shift-s = { type = "exec", exec = [ "noctalia", "msg", "settings-toggle" ] }
+logo-shift-e = { type = "exec", exec = [ "noctalia", "msg", "panel-toggle", "session" ] }
+
+alt-Tab = { type = "exec", exec = [ "noctalia", "msg", "window-switcher" ] }
+
+logo-p = { type = "exec", exec = [ "noctalia", "msg", "screenshot-region" ] }
+logo-shift-p = { type = "exec", exec = [ "noctalia", "msg", "screenshot-fullscreen" ] }
+logo-alt-p = { type = "exec", exec = [ "noctalia", "msg", "screenshot-fullscreen", "all" ] }
+
+# -- Switch between virtual terminals.
+ctrl-alt-F1 = { type = "switch-to-vt", num = 1 }
+ctrl-alt-F2 = { type = "switch-to-vt", num = 2 }
+ctrl-alt-F3 = { type = "switch-to-vt", num = 3 }
+ctrl-alt-F4 = { type = "switch-to-vt", num = 4 }
+ctrl-alt-F5 = { type = "switch-to-vt", num = 5 }
+ctrl-alt-F6 = { type = "switch-to-vt", num = 6 }
+ctrl-alt-F7 = { type = "switch-to-vt", num = 7 }
+ctrl-alt-F8 = { type = "switch-to-vt", num = 8 }
+ctrl-alt-F9 = { type = "switch-to-vt", num = 9 }
+ctrl-alt-F10 = { type = "switch-to-vt", num = 10 }
+ctrl-alt-F11 = { type = "switch-to-vt", num = 11 }
+ctrl-alt-F12 = { type = "switch-to-vt", num = 12 }
+
+# -- Switch between workspaces.
+logo-1 = { type = "show-workspace", name = "1" }
+logo-2 = { type = "show-workspace", name = "2" }
+logo-3 = { type = "show-workspace", name = "3" }
+logo-4 = { type = "show-workspace", name = "4" }
+logo-5 = { type = "show-workspace", name = "5" }
+logo-6 = { type = "show-workspace", name = "6" }
+logo-7 = { type = "show-workspace", name = "7" }
+logo-8 = { type = "show-workspace", name = "8" }
+logo-9 = { type = "show-workspace", name = "9" }
+logo-0 = { type = "show-workspace", name = "10" }
+
+# -- Move windows between workspaces.
+logo-shift-1 = { type = "move-to-workspace", name = "1" }
+logo-shift-2 = { type = "move-to-workspace", name = "2" }
+logo-shift-3 = { type = "move-to-workspace", name = "3" }
+logo-shift-4 = { type = "move-to-workspace", name = "4" }
+logo-shift-5 = { type = "move-to-workspace", name = "5" }
+logo-shift-6 = { type = "move-to-workspace", name = "6" }
+logo-shift-7 = { type = "move-to-workspace", name = "7" }
+logo-shift-8 = { type = "move-to-workspace", name = "8" }
+logo-shift-9 = { type = "move-to-workspace", name = "9" }
+logo-shift-0 = { type = "move-to-workspace", name = "10" }
+
+# -- https://mahkoh.github.io/jay/book/configuration/shortcuts.html#complex-shortcuts --
+# -- Mostly to allow the media keys to be triggered when the screen is locked.
+[complex-shortcuts]
+XF86AudioRaiseVolume = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg volume-up",
+    repeat = true,
+    allow-locked = true,
+}
+XF86AudioLowerVolume = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg volume-down",
+    repeat = true,
+    allow-locked = true,
+}
+XF86AudioMute = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg volume-mute",
+    repeat = true,
+    allow-locked = true,
+}
+XF86AudioMicMute = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg mic-mute",
+    repeat = true,
+    allow-locked = true,
+}
+
+XF86AudioNext = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg media next",
+    repeat = true,
+    allow-locked = true,
+}
+XF86AudioPrev = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg media previous",
+    repeat = true,
+    allow-locked = true,
+}
+XF86AudioPlay = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg media play",
+    repeat = true,
+    allow-locked = true,
+}
+XF86AudioPause = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg media stop",
+    repeat = true,
+    allow-locked = true,
+}
+
+XF86MonBrightnessUp = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg brightness-up",
+    repeat = true,
+    allow-locked = true,
+}
+XF86MonBrightnessDown = {
+    action.type = "exec",
+    action.exec.shell = "noctalia msg brightness-down",
+    repeat = true,
+    allow-locked = true,
+}
+
+# -- https://mahkoh.github.io/jay/book/window-rules.html --
+# -- Set your window-rules below. You can use the Jay' Control Center's 'Window Search' to check for app-id or title.
+[[windows]]
+match.any = [
+   { app-id = "com.shellyorg.shelly" },
+   { app-id = "org.kde.dolphin" },
+   { x-class = "steam", not.title-regex = "^[Ss]team$" },
+   { title-regex = "^Steam Settings$" },
+   { title-regex = "^(Open File)(.*)$" },
+   { title-regex = "^(Select a File)(.*)$" },
+   { title-regex = "^(Choose wallpaper)(.*)$" },
+   { title-regex = "^(Open Folder)(.*)$" },
+   { title-regex = "^(Save As)(.*)$" },
+   { title-regex = "^(Library)(.*)$" },
+   { title-regex = "^(File Upload)(.*)$" },
+   { title-regex = "(.*)(wants to save)$" },
+   { title-regex = "^(Select EXE to Run)(.*)$" },
+   { title-regex = "^(pavucontrol)$" },
+   { title-regex = "^.*Welcome$" },
+   { title-regex = "^(Copying — Dolphin)$" },
+   { title-regex = "^.*is sharing (a window|your screen).*$" },
+   { title-regex = "^([Pp]icture[-\\s]?[Ii]n[-\\s]?[Pp]icture)(.*)$" },
+]
+initial-tile-state = "floating"
+
+# -- https://mahkoh.github.io/jay/book/window-rules.html#granting-privileges --
+# -- So all clients have access to the privileged protocols. This also make sure Noctalia can manage workspaces, see active windows, take screenshots, etc.
+[[clients]]
+capabilities = "all"
