@@ -1,0 +1,8 @@
+        // ────────────── Startup Applications ────────────── //
+
+  spawn-sh-at-startup "noctalia"
+  spawn-at-startup "niri-focused-booster"
+  spawn-sh-at-startup "solaar --window=hide"
+  spawn-sh-at-startup "steam -silent"
+  spawn-sh-at-startup "heroic"
+  spawn-sh-at-startup "sleep 3 && vesktop"

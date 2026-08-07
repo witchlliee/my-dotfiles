@@ -1,0 +1,68 @@
+  prefer-no-csd
+  screenshot-path null
+
+  environment {
+       // wayland
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+    QT_QPA_PLATFORM "wayland"
+    SDL_VIDEODRIVER "wayland,x11"
+    CLUTTER_BACKEND "wayland"
+    ELM_DISPLAY "1"
+    _JAVA_AWT_WM_NONREPARENTING "1"
+
+       // theming
+  }
+
+   blur {
+    passes 2
+    offset 4.0
+    noise 0.03
+    saturation 2.0
+   }
+
+  recent-windows {
+    off
+    debounce-ms 750
+    open-delay-ms 150
+
+    highlight {
+        active-color "#E0AFFF"
+        urgent-color "#ff9999ff"
+        padding 25
+        corner-radius 8
+    }
+
+    previews {
+        max-height 200
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+        Mod+grave       { next-window     filter="app-id"; }
+        Mod+Shift+grave { previous-window filter="app-id"; }
+    }
+  }
+
+  cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 28
+  }
+
+  debug {
+    honor-xdg-activation-with-invalid-serial
+    skip-cursor-only-updates-during-vrr
+    // disable-cursor-plane
+    // enable-overlay-planes
+    vulkan-renderer
+  }
+
+  hotkey-overlay {
+    skip-at-startup
+  }

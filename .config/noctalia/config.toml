@@ -1,12 +1,10 @@
-config_version = 2
-
 [backdrop]
 blur_intensity = 0.64999998547136784
 enabled = true
 
 [bar.default]
 background_opacity = 0.98999997787177563
-center = [ "workspaces", "Spacer_2", "media" ]
+center = [ "workspaces", "Spacer_2", "media", "Spacer_2", "cat" ]
 contact_shadow = true
 end = [
     "tray",
@@ -15,8 +13,6 @@ end = [
     "clipboard",
     "caffeine",
     "recorder",
-    "Spacer_2",
-    "shelly",
     "Spacer_2",
     "network",
     "bluetooth",
@@ -32,9 +28,9 @@ end = [
 ]
 margin_edge = 0
 margin_ends = 0
-radius_bottom_left = 0
-radius_bottom_right = 0
-radius_top_left = 0
+radius = 0
+radius_bottom_left = 15
+radius_bottom_right = 15
 radius_top_right = 0
 scale = 1.1000000089406967
 start = [ "Spacer", "launcher", "Spacer_2", "active_window" ]
@@ -45,30 +41,32 @@ cross_axis_padding = 2
 
 [idle]
 behavior_order = [ "lock", "Screen-off", "lock-and-suspend" ]
-pre_action_fade_seconds = 0
 
     [idle.behavior.Screen-off]
-    action = "command"
-    command = "jay randr output DP-1 disable; jay randr output DP-2 disable"
-    enabled = true
-    resume_command = "jay randr output DP-1 enable; jay randr output DP-2 enable"
-    timeout = 180.0
+    action = "screen_off"
+    enabled = false
+    timeout = 30.0
 
     [idle.behavior.lock]
     action = "lock"
-    enabled = true
-    timeout = 250.0
+    enabled = false
+    timeout = 40.0
 
     [idle.behavior.lock-and-suspend]
     action = "suspend"
-    enabled = true
+    enabled = false
     lock_before_suspend = false
     timeout = 600.0
 
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
+widget_order = [
+    "lockscreen-login-box@WAYLAND-1",
+    "lockscreen-login-box@WL-1",
+    "lockscreen-login-box@DP-2",
+    "lockscreen-login-box@DP-1"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -76,8 +74,8 @@ widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@DP-2", "lock
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 1280.0
     cy = 1321.0
     output = "DP-1"
@@ -88,16 +86,21 @@ widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@DP-2", "lock
         background_color = "surface_variant"
         background_opacity = 0.88
         background_radius = 12.0
+        center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 1280.0
     cy = 1321.0
     output = "DP-2"
@@ -108,16 +111,46 @@ widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@DP-2", "lock
         background_color = "surface_variant"
         background_opacity = 0.88
         background_radius = 12.0
+        center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@WAYLAND-1"]
+    box_height = 196.0
+    box_width = 580.0
+    cx = 306.0
+    cy = 473.0
+    output = "WAYLAND-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@WAYLAND-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@WL-1"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 611.0
     cy = 1191.0
     output = "WL-1"
@@ -128,12 +161,17 @@ widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@DP-2", "lock
         background_color = "surface_variant"
         background_opacity = 0.88
         background_radius = 12.0
+        center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
 [osd]
 position = "top_right"
@@ -150,13 +188,20 @@ video_directory = "~/Videos/wallpapers"
 [plugin_settings."noctalia/screen_recorder"]
 audio_source = "none"
 color_range = "limited"
-video_source = "focused"
+video_codec = "hevc"
 
 [plugin_settings."yogaeru/mango_layout"]
 main_placement = "attached"
 
 [plugins]
-enabled = [ "noctalia/screen_recorder", "leo/game-launcher", "noctalia/wallhaven", "noctalia/mpvpaper", "joshuaslate/shelly" ]
+enabled = [
+    "noctalia/screen_recorder",
+    "noctalia/wallhaven",
+    "joshuaslate/shelly",
+    "dotnetrob/cat",
+    "oldirtty/color_picker",
+    "tadomika_ari/w-engine"
+]
 
     [[plugins.source]]
     kind = "git"
@@ -168,16 +213,6 @@ enabled = [ "noctalia/screen_recorder", "leo/game-launcher", "noctalia/wallhaven
     location = "https://github.com/noctalia-dev/community-plugins"
     name = "community"
 
-    [[plugins.source]]
-    kind = "git"
-    location = "https://github.com/Ahmed5Emad/Gamelauncher-Noctalia"
-    name = "game-launcher"
-
-    [[plugins.source]]
-    kind = "git"
-    location = "https://github.com/yogaeru/noctalia-plugins"
-    name = "yogaeru"
-
 [shell]
 avatar_path = "/home/ellie/Pictures/pfp/1116048351393695117.gif"
 niri_overview_type_to_launch_enabled = true
@@ -186,9 +221,6 @@ settings_show_advanced = true
 
     [shell.greeter_sync]
     auto_sync = true
-
-    [shell.panel]
-    transparency_mode = "soft"
 
 [theme]
 builtin = "Noctalia"
@@ -207,13 +239,13 @@ transition_on_startup = true
     path = "/home/ellie/Pictures/Wallpapers/wallhaven-rqj837.png"
 
     [wallpaper.last]
-    path = "/home/ellie/.cache/noctalia/mpvpaper/_home_ellie_Videos_wallpapers_genshin_impact_paimon_night_camp_live_wallpaper_wallsflow_com_mp4.jpg"
+    path = "/home/ellie/Pictures/Wallpapers/wallhaven-rqj837.png"
 
     [wallpaper.monitors.DP-1]
     path = "/home/ellie/Pictures/Wallpapers/wallhaven-rqj837.png"
 
     [wallpaper.monitors.DP-2]
-    path = "/home/ellie/.cache/noctalia/mpvpaper/_home_ellie_Videos_wallpapers_genshin_impact_paimon_night_camp_live_wallpaper_wallsflow_com_mp4.jpg"
+    path = "/home/ellie/Pictures/Wallpapers/wallhaven-rqj837.png"
 
 [widget.Spacer]
 length = 10
@@ -222,6 +254,10 @@ type = "spacer"
 [widget.Spacer_2]
 type = "spacer"
 
+[widget.cat]
+cat_size = 34
+type = "dotnetrob/cat:cat"
+
 [widget.date]
 format = "{:%a %d %b -}"
 
@@ -229,21 +265,12 @@ format = "{:%a %d %b -}"
 custom_image = "/usr/share/icons/hicolor/scalable/apps/org.cachyos.hello.svg"
 scale = 1.45
 
-[widget.launcher_2]
-type = "leo/game-launcher:launcher"
-
 [widget.network]
 show_label = false
-
-[widget.picker]
-type = "yogaeru/mango_layout:picker"
 
 [widget.recorder]
 type = "noctalia/screen_recorder:recorder"
 
-[widget.shelly]
-type = "joshuaslate/shelly:shelly"
-
 [widget.workspaces]
 anchor = true
-display = "none"
+show_labels = false

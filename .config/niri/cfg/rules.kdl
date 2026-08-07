@@ -1,0 +1,129 @@
+  window-rule {
+    geometry-corner-radius 2
+    clip-to-geometry true
+    opacity 0.90
+    draw-border-with-background false
+
+    background-effect {
+      blur true
+      xray false
+    }
+
+    popups {
+      opacity 0.88
+      geometry-corner-radius 10
+
+      background-effect {
+        xray false
+        blur true
+        noise 0.05
+        saturation 2.5
+      }
+    }
+  }
+
+  window-rule {
+    match app-id="Nautilus"
+    opacity 0.90
+
+    popups {
+        geometry-corner-radius 15
+        opacity 0.88
+
+        background-effect {
+            blur true
+            xray false
+        }
+    }
+  }
+
+  window-rule {
+    match app-id="vivaldi-stable$"
+    match app-id="steam$"
+    match app-id="fluxer-canary$"
+    match app-id="spotify$"
+
+    open-maximized true
+  }
+
+  window-rule {
+    match app-id="steam"
+      exclude title=r#"^[Ss]team$"#
+    match app-id="^firefox$" title="^Picture-in-Picture$"
+    match title="Vivaldi Settings: General - Vivaldi$"
+    match app-id="^com.shellyorg.shelly$"
+    match app-id="^org.gnome.Nautilus$"
+    match app-id="^org.freedesktop.impl.portal.desktop.kde$"
+    match app-id="^org.kde.dolphin$"
+    match app-id="^org.kde.gwenview$"
+
+    open-floating true
+  }
+
+  window-rule {
+    match app-id="dev.noctalia.Noctalia.Settings"
+    open-floating true
+    default-column-width { fixed 1080; }
+    default-window-height { fixed 920; }
+  }
+
+
+  window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+      default-floating-position x=10 y=10 relative-to="bottom-right"
+
+    open-focused false
+    open-floating true
+  }
+
+  window-rule {
+    match app-id="^(steam_app).*$"
+    match app-id="^.*\\.exe$"
+    match app-id="^HytaleClient$"
+    match title="^Minecraft.*$"
+    match app-id="^org.vinegarhq.Sober$"
+    match app-id="^csgo_linux64$"
+    match app-id="^hl2_linux$"
+
+    variable-refresh-rate true
+    allow-tearing true
+  }
+
+  window-rule {
+    match app-id="^fluxer-canary$"
+
+    open-on-output "DP-2"
+  }
+
+  window-rule {
+    match app-id="dev.noctalia.Noctalia"
+    open-floating true
+    default-column-width { fixed 1080; }
+    default-window-height { fixed 920; }
+  }
+
+  layer-rule {
+    match layer="top"
+    match layer="overlay"
+
+      background-effect {
+        xray false
+      }
+  }
+
+  layer-rule {
+    match namespace="^noctalia-backdrop*$"
+    match namespace="^awww-daemon$"
+    match namespace="^linux-wallpaperengine$"
+
+    place-within-backdrop true
+  }
+
+
+  layer-rule {
+    match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+
+    background-effect {
+     xray false
+    }
+  }
