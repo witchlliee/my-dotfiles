@@ -176,30 +176,22 @@ widget_order = [
 [osd]
 position = "top_right"
 
-[plugin_settings."joshuaslate/shelly"]
-notify = true
-
-[plugin_settings."leo/game-launcher"]
-browser_placement = "attached"
-
 [plugin_settings."noctalia/mpvpaper"]
 video_directory = "~/Videos/wallpapers"
 
 [plugin_settings."noctalia/screen_recorder"]
 audio_source = "none"
-color_range = "limited"
+color_range = "full"
 video_codec = "hevc"
-
-[plugin_settings."yogaeru/mango_layout"]
-main_placement = "attached"
 
 [plugins]
 enabled = [
     "noctalia/screen_recorder",
     "noctalia/wallhaven",
-    "joshuaslate/shelly",
     "dotnetrob/cat",
     "oldirtty/color_picker",
+    "nilsonlinux/rss-notifier",
+    "kenn/keybind-cheatsheet",
     "tadomika_ari/w-engine"
 ]
 
@@ -214,10 +206,14 @@ enabled = [
     name = "community"
 
 [shell]
-avatar_path = "/home/ellie/Pictures/pfp/1116048351393695117.gif"
+avatar_path = ""
 niri_overview_type_to_launch_enabled = true
 polkit_agent = true
+launch_apps_as_systemd_services = true
 settings_show_advanced = true
+
+    [shell.panel]
+    transparency_mode = "soft"
 
     [shell.greeter_sync]
     auto_sync = true
@@ -262,7 +258,7 @@ type = "dotnetrob/cat:cat"
 format = "{:%a %d %b -}"
 
 [widget.launcher]
-custom_image = "/usr/share/icons/hicolor/scalable/apps/org.cachyos.hello.svg"
+custom_image = "~/Pictures/icons/k204218.png"
 scale = 1.45
 
 [widget.network]

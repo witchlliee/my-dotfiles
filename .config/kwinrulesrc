@@ -1,0 +1,15 @@
+[267872d6-7ea8-4588-b248-f6683c502e0c]
+Description=New window settings
+noborder=true
+noborderrule=2
+
+[General]
+count=2
+rules=267872d6-7ea8-4588-b248-f6683c502e0c,cec5e043-9f3b-45ad-9b21-76d178c693b3
+
+[cec5e043-9f3b-45ad-9b21-76d178c693b3]
+Description=New window settings
+opacityactive=93
+opacityactiverule=2
+opacityinactive=93
+opacityinactiverule=2
